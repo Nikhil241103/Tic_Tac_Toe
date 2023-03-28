@@ -4,7 +4,7 @@ import DataContext from "../context/DataContext";
 
 const Home = () => {
     const navigate = useNavigate()
-    const { setIsSeries, setXColor, setOColor } = useContext(DataContext)
+    const { setIsSeries } = useContext(DataContext)
 
     const handleQuickGame = (e) => {
         e.preventDefault()
