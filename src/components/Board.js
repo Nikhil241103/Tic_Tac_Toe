@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Square from "./Square";
 import DataContext from "../context/DataContext";
 
@@ -9,8 +9,8 @@ const Board = () => {
         declareWinner,
         statusColor,
         isSeries,
-        numberOfMatches, setNumberOfMatches,
-        setWinDecider, winDecider,
+        numberOfMatches,
+        setWinDecider,
         tableData, setTableData,
         matchNumber, setMatchNumber } = useContext(DataContext)
     const [status, setStatus] = useState(null)
@@ -18,7 +18,7 @@ const Board = () => {
 
     useEffect(() => {
         check()
-    }, [squares])
+    }, [])
 
     const check = () => {
         const winner = declareWinner()
