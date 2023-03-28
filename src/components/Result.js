@@ -6,7 +6,14 @@ import DataContext from "../context/DataContext";
 
 function Result() {
     const navigate = useNavigate()
-    const { tableData, numberOfMatches, winDecider } = useContext(DataContext)
+    const {
+        setSquares,
+        setIsPlayer1Next,
+        setMatchNumber,
+        tableData,
+        numberOfMatches, setNumberOfMatches,
+        winDecider, setWinDecider,
+    } = useContext(DataContext)
     const requiredTableData = tableData.sort(function (a, b) { return a.match < b.match ? -1 : 1; }).slice(0, numberOfMatches);
     const data = useMemo(() => requiredTableData, []);
     const columns = useMemo(
@@ -25,6 +32,11 @@ function Result() {
 
     const onClickHome = (e) => {
         e.preventDefault();
+        setSquares(Array(9).fill(null))
+        setIsPlayer1Next(true)
+        setMatchNumber(0)
+        setWinDecider(0)
+        setNumberOfMatches(2)
         navigate("/", { replace: true });
     }
 

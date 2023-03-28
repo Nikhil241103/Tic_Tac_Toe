@@ -116,7 +116,6 @@ main {
   background-color: var(--primary-color);
   color: var(--secondary-bg);
   border-color: var(--secondary-bg);
-  font-weight: 700;
 }
 
 #home {
@@ -260,7 +259,7 @@ tbody td:hover:before {
   background-color: var(--primary-color);
   color: var(--secondary-bg);
   border-color: var(--secondary-bg);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 820px) {

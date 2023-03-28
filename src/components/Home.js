@@ -9,8 +9,6 @@ const Home = () => {
     const handleQuickGame = (e) => {
         e.preventDefault()
         setIsSeries(false)
-        setXColor("red")
-        setOColor("blue")
         navigate("/play")
     }
 

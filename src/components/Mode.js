@@ -4,7 +4,17 @@ import Select from "react-select";
 import DataContext from "../context/DataContext";
 
 const Mode = () => {
-    const { player1Color, setPlayer1Color, player2Color, setPlayer2Color, options, setXColor, setOColor, setNumberOfMatches } = useContext(DataContext)
+    const {
+        player1Color, setPlayer1Color,
+        player2Color, setPlayer2Color,
+        options,
+        setXColor, setOColor,
+        setNumberOfMatches,
+        setSquares,
+        setIsPlayer1Next,
+        setMatchNumber,
+        setWinDecider,        
+    } = useContext(DataContext)
     const navigate = useNavigate()
     let numberOfMatchesList = Array.from({ length: 10 }, (value, index) => {
         return { value: index + 1, label: index + 1 }
@@ -43,6 +53,11 @@ const Mode = () => {
 
     const onClickHome = (e) => {
         e.preventDefault();
+        setSquares(Array(9).fill(null))
+        setIsPlayer1Next(true)
+        setMatchNumber(0)
+        setWinDecider(0)
+        setNumberOfMatches(2)
         navigate("/", { replace: true });
     }
 

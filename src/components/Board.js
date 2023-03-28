@@ -4,15 +4,17 @@ import Square from "./Square";
 import DataContext from "../context/DataContext";
 
 const Board = () => {
-    const { squares, setSquares,
-        isPlayer1Next,
+    const {
+        squares, setSquares,
+        isPlayer1Next, setIsPlayer1Next,
         declareWinner,
         statusColor,
         isSeries,
-        numberOfMatches,
+        numberOfMatches, setNumberOfMatches,
         setWinDecider,
         tableData, setTableData,
-        matchNumber, setMatchNumber } = useContext(DataContext)
+        matchNumber, setMatchNumber
+    } = useContext(DataContext)
     const [status, setStatus] = useState(null)
     const navigate = useNavigate()
 
@@ -47,7 +49,7 @@ const Board = () => {
     }
 
     const reset = (e) => {
-        if ((matchNumber + 1) === numberOfMatches) {
+        if (isSeries && (matchNumber + 1) === numberOfMatches) {
             navigate("/result", { replace: true })
         }
         e.preventDefault()
@@ -60,6 +62,11 @@ const Board = () => {
 
     const onClickHome = (e) => {
         e.preventDefault();
+        setSquares(Array(9).fill(null))
+        setIsPlayer1Next(true)
+        setMatchNumber(0)
+        setWinDecider(0)
+        setNumberOfMatches(2)
         navigate("/", { replace: true });
     }
 
