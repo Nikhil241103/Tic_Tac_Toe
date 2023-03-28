@@ -26,7 +26,7 @@ function Result() {
                 Header: "Winner",
                 accessor: "winner",
             },
-        ], []);
+        ], [requiredTableData]);
 
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
 
