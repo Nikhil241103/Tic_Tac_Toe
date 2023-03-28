@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Square from "./Square";
 import DataContext from "../context/DataContext";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const Board = () => {
     const { squares, setSquares,
