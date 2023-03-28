@@ -20,7 +20,7 @@ const Board = () => {
 
     useEffect(() => {
         check()
-    }, [])
+    })
 
     const check = () => {
         const winner = declareWinner()
