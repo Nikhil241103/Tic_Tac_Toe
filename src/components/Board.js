@@ -20,7 +20,7 @@ const Board = () => {
 
     useEffect(() => {
         check()
-    })
+    }, [squares])
 
     const check = () => {
         const winner = declareWinner()
@@ -28,19 +28,19 @@ const Board = () => {
             let newTableData = tableData;
             if (winner === 'T') {
                 setStatus("Tie!")
-                newTableData[matchNumber] = { ...newTableData[matchNumber], "winner": "Tie" };
+                newTableData[matchNumber] = { ...newTableData[matchNumber], "winner": "Tie" }
                 setTableData(newTableData)
             }
             else {
                 if (isPlayer1Next) {
                     setStatus("winner: Player 2")
-                    setWinDecider(prev => prev + 1)
-                    newTableData[matchNumber] = { ...newTableData[matchNumber], "winner": "Player 2" };
+                    setWinDecider(prev => (prev + 1))
+                    newTableData[matchNumber] = { ...newTableData[matchNumber], "winner": "Player 2" }
                     setTableData(newTableData)
                 } else {
                     setStatus("winner: Player 1")
-                    setWinDecider(prev => prev - 1)
-                    newTableData[matchNumber] = { ...newTableData[matchNumber], "winner": "Player 1" };
+                    setWinDecider(prev => (prev - 1))
+                    newTableData[matchNumber] = { ...newTableData[matchNumber], "winner": "Player 1" }
                     setTableData(newTableData)
                 }
             }
@@ -49,10 +49,10 @@ const Board = () => {
     }
 
     const reset = (e) => {
+        e.preventDefault()
         if (isSeries && (matchNumber + 1) === numberOfMatches) {
             navigate("/result", { replace: true })
         }
-        e.preventDefault()
         const newSquares = squares.slice().fill(null)
         setSquares(newSquares)
         setMatchNumber(prev => prev + 1)

@@ -15,7 +15,7 @@ function Result() {
         winDecider, setWinDecider,
     } = useContext(DataContext)
     const requiredTableData = tableData.sort(function (a, b) { return a.match < b.match ? -1 : 1; }).slice(0, numberOfMatches);
-    const data = useMemo(() => requiredTableData, []);
+    const data = useMemo(() => requiredTableData, [requiredTableData]);
     const columns = useMemo(
         () => [
             {
@@ -26,7 +26,7 @@ function Result() {
                 Header: "Winner",
                 accessor: "winner",
             },
-        ]);
+        ], []);
 
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
 
@@ -42,7 +42,10 @@ function Result() {
 
     return (
         <div id="table-container">
-            <h1 className="result">Winner: {winDecider > 0 ? "Player 2" : "Player 1"}</h1>
+            <h1 className="result">Winner: {
+                winDecider === 0 ? "Tie"
+                    : winDecider > 0 ? "Player 2" : "Player 1"
+            }</h1>
             <table {...getTableProps()}>
                 <thead>
                     {headerGroups.map((headerGroup) => (
